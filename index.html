@@ -10,6 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <style>
       body {
         font-family: "PT Sans", serif;
@@ -199,35 +201,43 @@
       .day {
         font-size: 0.8em;
       }
+      #date {
+        color: #ece6ec;
+      }
     </style>
   </head>
   <body>
     <div class="container">
+      <p id="date">Date</p>
       <div class="imojii-div">
         <p class="imojii">🌦️</p>
       </div>
       <div class="top-container">
         <div class="current">
           <h1>
-            <span class="current-temp">26</span>
+            <span class="current-temp" id="currenttemperature">26</span>
             <sup class="temp-symbol">&deg;C</sup>
           </h1>
         </div>
-        <h3 class="city">Cape Town</h3>
+        <h3 class="city" id="city">Cape Town</h3>
         <p>
-          <span class="feels">Feels like 32&deg;C</span> &nbsp;<span
-            class="seperator"
-            >|</span
-          >
-          <span class="windandhumidity">Wind:4km/h</span>
+          <span class="feels" id="description">Feels like 32&deg;C</span>
+          &nbsp;<span class="seperator">|</span>
+          <span class="windandhumidity">Wind:</span>
+          <span id="wind">4</span>km/h
           <span class="seperator">|</span>
-          <span class="windandhumidity">💧Humidity: 15%</span>
+          <span class="windandhumidity">💧Humidity: </span
+          ><span id="humidity">15</span>%
         </p>
       </div>
-      <div class="search-container">
-        <input type="text" placeholder="Search for your city here..." />
-        <button class="search-btn">Search</button>
-      </div>
+      <form class="search-container" id="search-form">
+        <input
+          type="text"
+          placeholder="Search for your city here..."
+          id="search"
+        />
+        <input type="submit" class="search-btn" id="submit-btn" />
+      </form>
       <div class="nexthrs">
         <div class="now">
           <p>
@@ -355,5 +365,63 @@
         <a href="https://weatherappeve.netlify.app/">Netlify</a>
       </footer>
     </div>
+    <script>
+      function updateWeather(response) {
+        let temperatureElement = document.getElementById("currenttemperature");
+        let temperature = response.data.temperature.current;
+
+        let descriptionElement = document.getElementById("description");
+        let windElement = document.getElementById("wind");
+        let humidityElement = document.getElementById("humidity");
+        let dateElement = document.getElementById("date");
+        let time = new Date(response.data.time * 1000);
+
+        dateElement.innerHTML = formatDate(time);
+        humidityElement.innerHTML = response.data.temperature.humidity;
+        windElement.innerHTML = response.data.wind.speed;
+        descriptionElement.innerHTML = response.data.condition.description;
+        temperatureElement.innerHTML = Math.round(temperature);
+      }
+      function formatDate(time) {
+        let minutes = time.getMinutes();
+        let hours = time.getHours();
+        let days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        let day = days[time.getDay()];
+        if (minutes < 10) {
+          minutes = `0${minutes}`;
+        }
+        return `${day} ${hours}:${minutes}`;
+      }
+      function searchCity(city) {
+        let apiKey = "98c6908928o398at73a4fcd4bb2e4180";
+        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+        axios
+          .get(apiUrl)
+          .then(updateWeather)
+          .catch((error) =>
+            console.error("Error fetching weather data:", error)
+          );
+      }
+
+      function handleSearchSubmit(event) {
+        event.preventDefault();
+        let searchInput = document.getElementById("search");
+        let city = document.getElementById("city");
+        let cityName = searchInput.value.trim();
+        city.innerHTML = cityName;
+        searchCity(cityName);
+      }
+
+      let searchForm = document.getElementById("search-form");
+      searchForm.addEventListener("submit", handleSearchSubmit);
+    </script>
   </body>
 </html>
