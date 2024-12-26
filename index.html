@@ -196,6 +196,12 @@
         font-size: 1.3em;
         font-weight: lighter;
       }
+      .imoji img {
+        width: 50px;
+        padding: 1px;
+        margin-top: -20px;
+        margin-bottom: -10px;
+      }
     </style>
   </head>
   <body>
@@ -263,6 +269,7 @@
         iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="iconimg" />`;
 
         cityElement.innerHTML = response.data.city;
+        getForecast(response.data.city);
       }
       function formatDate(time) {
         let minutes = time.getMinutes();
@@ -299,27 +306,56 @@
         searchCity(cityName);
       }
 
-      function displayForecast() {
+      function getForecast(city) {
+        let apiKey = "98c6908928o398at73a4fcd4bb2e4180";
+        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+        axios(apiUrl).then(displayForecast);
+      }
+      function displayForecast(response) {
         let forecastElement = document.getElementById("forecast");
-        let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
         let forecastHtml = "";
-        days.forEach(function (day) {
+
+        // Get the current date and calculate tomorrow
+        let now = new Date();
+        let days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+
+        response.data.daily.slice(0, 5).forEach(function (day, index) {
+          let dayIndex = (now.getDay() + index + 1) % 7;
+          let dayName = days[dayIndex];
+
           forecastHtml += `
-            <div class="forecastd">
-              <div class="hour">${day}</div>
-              <div class="imoji">🌧️</div>
-              <div class="min-maxtemp">
-                <div class="max-temp">30<span class="temp-symbol1">&deg;C</span>&nbsp;&nbsp;<span class="seperate">|</span></div>
-              <div class="min-temp">10<span class="temp-symbol1">&deg;C</span></div></div>
-            </div>
-          `;
+      <div class="forecastd">
+        <div class="hour">${dayName}</div>
+        <div class="imoji">
+          <img src="${day.condition.icon_url}" alt="${
+            day.condition.description
+          }" />
+        </div>
+        <div class="min-maxtemp">
+          <div class="max-temp">${Math.round(day.temperature.maximum)}
+            <span class="temp-symbol1">&deg;C</span>
+          </div>
+          <div class="min-temp">${Math.round(day.temperature.minimum)}
+            <span class="temp-symbol1">&deg;C</span>
+          </div>
+        </div>
+      </div>
+    `;
         });
+
         forecastElement.innerHTML = forecastHtml;
       }
 
       window.onload = function () {
         searchCity("Cape Town");
-        displayForecast();
       };
 
       let searchForm = document.getElementById("search-form");
