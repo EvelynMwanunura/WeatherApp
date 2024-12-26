@@ -30,13 +30,11 @@
         align-items: center;
         border-radius: 20px;
         width: 500px;
-
-        background: white;
         background-image: url(sunrise.jpg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 850px;
+        height: 800px;
       }
 
       input {
@@ -106,8 +104,9 @@
         padding-left: 10px;
         padding-right: 10px;
         padding-bottom: -5px;
-        height: 40px;
+        height: 50px;
         display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.2);
         justify-content: space-between;
         transition: transform 0.8s ease, background-color 0.8s ease;
         border-radius: 20px;
@@ -144,7 +143,7 @@
         text-align: center;
       }
       .feels {
-        font-size: 0.6em;
+        font-size: 0.8em;
       }
       .seperator {
         font-size: 1.4em;
@@ -152,6 +151,9 @@
       .windandhumidity {
         font-size: 0.8em;
         margin-top: 0;
+      }
+      .symbols {
+        font-size: 0.8em;
       }
       .current {
         margin-top: -50px;
@@ -164,13 +166,13 @@
         font-size: 0.9em;
         vertical-align: 2.4em;
         font-weight: lighter;
-        margin-left: -0.7em;
+        margin-left: -0.5em;
       }
       .temp-symbol1 {
         font-size: 0.7em;
         vertical-align: 1.6em;
         font-weight: lighter;
-        margin-left: -0.5em;
+        margin-left: 0.5em;
       }
       .temp-symbol2 {
         font-size: 0.5em;
@@ -196,32 +198,53 @@
         font-size: 0.8em;
       }
       #date {
-        color: #ece6ec;
+        color: white;
+      }
+      .tempicon {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .icon img {
+        width: 150px;
+        height: 150px;
+        margin-top: -50px;
+      }
+      #wind {
+        font-size: 0.8em;
+      }
+
+      #humidity {
+        font-size: 0.8em;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <p id="date">Date</p>
-      <div id="icon"></div>
-      <div class="top-container">
-        <div class="current">
-          <h1>
-            <span class="current-temp" id="currenttemperature">26</span>
-            <sup class="temp-symbol">&deg;C</sup>
-          </h1>
+
+      <div class="tempicon">
+        <div id="icon" class="icon"></div>
+        <div class="top-container">
+          <div class="current">
+            <h1>
+              <span class="current-temp" id="currenttemperature">26</span>
+              <sup class="temp-symbol">&deg;C</sup>
+            </h1>
+          </div>
         </div>
-        <h3 class="city" id="city">Cape Town</h3>
-        <p>
-          <span class="feels" id="description">Feels like 32&deg;C</span>
-          &nbsp;<span class="seperator">|</span>
-          <span class="windandhumidity">Wind:</span>
-          <span id="wind">4</span>km/h
-          <span class="seperator">|</span>
-          <span class="windandhumidity">💧Humidity: </span
-          ><span id="humidity">15</span>%
-        </p>
       </div>
+      <h3 class="city" id="city">Cape Town</h3>
+      <p>
+        <span class="feels" id="description">Feels like 32&deg;C</span>
+        &nbsp;<span class="seperator">|</span>
+        <span class="windandhumidity">🌬️Wind:</span>
+        <span id="wind">4</span><span class="symbols">km/h</span>
+        <span class="seperator">|</span>
+        <span class="windandhumidity">💧Humidity: </span
+        ><span id="humidity">15</span><span class="symbols">%</span>
+      </p>
+
       <form class="search-container" id="search-form">
         <input
           type="text"
@@ -360,23 +383,24 @@
     <script>
       function updateWeather(response) {
         let temperatureElement = document.getElementById("currenttemperature");
-        let temperature = response.data.temperature.current;
-
         let descriptionElement = document.getElementById("description");
         let windElement = document.getElementById("wind");
         let humidityElement = document.getElementById("humidity");
         let dateElement = document.getElementById("date");
-        let time = new Date(response.data.time * 1000);
+        let cityElement = document.getElementById("city");
         let iconElement = document.getElementById("icon");
-        iconElement.innerHTML = `<img
-          src="${response.data.condition.icon_url}"class="iconimg"
-        />`;
 
-        dateElement.innerHTML = formatDate(time);
-        humidityElement.innerHTML = response.data.temperature.humidity;
-        windElement.innerHTML = response.data.wind.speed;
+        let time = new Date(response.data.time * 1000);
+        temperatureElement.innerHTML = Math.round(
+          response.data.temperature.current
+        );
         descriptionElement.innerHTML = response.data.condition.description;
-        temperatureElement.innerHTML = Math.round(temperature);
+        windElement.innerHTML = response.data.wind.speed;
+        humidityElement.innerHTML = response.data.temperature.humidity;
+        dateElement.innerHTML = formatDate(time);
+        iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="iconimg" />`;
+
+        cityElement.innerHTML = response.data.city;
       }
       function formatDate(time) {
         let minutes = time.getMinutes();
@@ -406,16 +430,18 @@
             console.error("Error fetching weather data:", error)
           );
       }
-
       function handleSearchSubmit(event) {
         event.preventDefault();
         let searchInput = document.getElementById("search");
         let city = document.getElementById("city");
-        let cityName = searchInput.value.trim();
+        let cityName = searchInput.value.trim() || "Cape Town";
         city.innerHTML = cityName;
         searchCity(cityName);
       }
 
+      window.onload = function () {
+        searchCity("Cape Town");
+      };
       let searchForm = document.getElementById("search-form");
       searchForm.addEventListener("submit", handleSearchSubmit);
     </script>
