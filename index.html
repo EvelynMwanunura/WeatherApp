@@ -29,35 +29,38 @@
         flex-direction: column;
         align-items: center;
         border-radius: 20px;
-        width: 500px;
+        width: 700px;
         background-image: url(sunrise.jpg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 800px;
+        height: 700px;
       }
 
       input {
-        width: 300px;
+        width: 450px;
         background: rgba(0, 0, 0, 0.2);
         border-radius: 20px;
         height: 45px;
         color: black;
         border: none;
         padding: 5px;
+        transition: transform 0.8s ease, background-color 0.8s ease;
       }
       input:hover {
         background: black;
         color: white;
+        transform: scale(1.1);
       }
       .search-btn {
-        width: 75px;
+        width: 100px;
         background: black;
         border-radius: 20px;
-        height: 45px;
+        height: 55px;
         background: rgba(0, 0, 0, 0.2);
         border: none;
         cursor: pointer;
+        margin-top: 50px;
         transition: transform 0.8s ease, background-color 0.8s ease;
       }
       .search-btn:hover {
@@ -66,51 +69,26 @@
         transform: scale(1.2);
       }
 
-      .nexthrs {
-        display: flex;
-        position: relative;
-        justify-content: space-around;
-        width: 400px;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 20px;
-        margin-top: 10px;
-        color: white;
-      }
-      .now {
-        width: 60px;
-        border-radius: 20px;
-        padding-left: 10px;
-        cursor: pointer;
-        transition: transform 0.8s ease, background-color 0.8s ease;
-      }
-      .now:hover {
-        transform: scale(1.2);
-        border: 1px solid grey;
-        border-radius: 20px;
-        background: black;
-      }
-
       .forecast {
-        display: block;
-        color: white;
-        width: 400px;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 20px;
-        margin-top: 10px;
-        padding: 10px;
-      }
-
-      .forecastd {
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: -5px;
-        height: 50px;
         display: flex;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        text-align: center;
+        position: relative;
         justify-content: space-between;
-        transition: transform 0.8s ease, background-color 0.8s ease;
+        width: 600px;
+        margin-top: 50px;
+        color: white;
+        height: 200px;
+      }
+      .forecastd {
+        width: 900px;
+        height: 120px;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 20px;
+        padding: 10px;
         cursor: pointer;
+
+        transition: transform 0.8s ease, background-color 0.8s ease;
       }
       .forecastd:hover {
         transform: scale(1.2);
@@ -119,16 +97,13 @@
         background: black;
       }
 
-      .day {
-        padding-top: 15px;
-      }
       .temp {
         font-size: 2em;
       }
 
       footer {
         color: white;
-        padding: 10px;
+        padding: 20px;
       }
       footer a {
         color: blue;
@@ -156,7 +131,7 @@
         font-size: 0.8em;
       }
       .current {
-        margin-top: -50px;
+        margin-top: -20px;
       }
       .current-temp {
         font-size: 4em;
@@ -169,34 +144,21 @@
         margin-left: -0.5em;
       }
       .temp-symbol1 {
-        font-size: 0.7em;
-        vertical-align: 1.6em;
-        font-weight: lighter;
-        margin-left: 0.5em;
-      }
-      .temp-symbol2 {
-        font-size: 0.5em;
-        vertical-align: 1em;
+        font-size: 0.4em;
+        vertical-align: 1.3em;
         font-weight: lighter;
         margin-left: -0.1em;
       }
+
       .city {
         margin-bottom: -20px;
-        margin-top: -40px;
+        margin-top: -20px;
         font-size: 1.5em;
       }
       .imoji {
         padding: 10px;
       }
-      .temp {
-        font-size: 1.3em;
-      }
-      .hour {
-        font-size: 0.8em;
-      }
-      .day {
-        font-size: 0.8em;
-      }
+
       #date {
         color: white;
       }
@@ -216,6 +178,23 @@
 
       #humidity {
         font-size: 0.8em;
+      }
+      .min-maxtemp {
+        display: flex;
+        gap: 20px;
+        text-align: center;
+      }
+      .hour {
+        font-size: 1.2em;
+        padding-bottom: 10px;
+      }
+      .max-temp {
+        font-size: 1.3em;
+        font-weight: bolder;
+      }
+      .min-temp {
+        font-size: 1.3em;
+        font-weight: lighter;
       }
     </style>
   </head>
@@ -253,125 +232,8 @@
         />
         <input type="submit" class="search-btn" id="submit-btn" />
       </form>
-      <div class="nexthrs">
-        <div class="now">
-          <p>
-            <span class="hour">Now</span>
-            <br />
-            <br />
-            <span class="imoji">☀️</span>
-            <br />
-            <br />
-            <span class="temp">26</span>
-            <sup class="temp-symbol1">&deg;C</sup>
-          </p>
-        </div>
-        <div class="now">
-          <p>
-            <span class="hour">20:00</span>
-            <br />
-            <br />
-            <span class="imoji">☀️</span>
-            <br />
-            <br />
-            <span class="temp">26</span>
-            <sup class="temp-symbol1">&deg;C</sup>
-          </p>
-        </div>
-        <div class="now">
-          <p>
-            <span class="hour">21:00</span>
-            <br />
-            <br />
-            <span class="imoji">☀️</span>
-            <br />
-            <br />
-            <span class="temp">26</span>
-            <sup class="temp-symbol1">&deg;C</sup>
-          </p>
-        </div>
-        <div class="now">
-          <p>
-            <span class="hour">22:00</span>
-            <br />
-            <br />
-            <span class="imoji">☀️</span>
-            <br />
-            <br />
-            <span class="temp">26</span>
-            <sup class="temp-symbol1">&deg;C</sup>
-          </p>
-        </div>
-        <div class="now">
-          <p>
-            <span class="hour">23:00</span>
-            <br />
-            <br />
-            <span class="imoji">☀️</span>
-            <br />
-            <br />
-            <span class="temp">26</span>
-            <sup class="temp-symbol1">&deg;C</sup>
-          </p>
-        </div>
-      </div>
-      <section class="forecast">
-        <div class="forecastd">
-          <div class="day">Today</div>
-          <div class="daysdetails">
-            <p>
-              🌥️&nbsp;☀️&nbsp;30
-              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
-                >15<sup class="temp-symbol2">&deg;C</sup></span
-              >
-            </p>
-          </div>
-        </div>
-        <div class="forecastd">
-          <div class="day">Tuesday</div>
-          <div class="daysdetails">
-            <p>
-              🌥️&nbsp;☀️&nbsp;30
-              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
-                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
-              >
-            </p>
-          </div>
-        </div>
-        <div class="forecastd">
-          <div class="day">Wednesday</div>
-          <div class="daysdetails">
-            <p>
-              🌥️&nbsp;☀️&nbsp;30
-              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
-                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
-              >
-            </p>
-          </div>
-        </div>
-        <div class="forecastd">
-          <div class="day">Thursday</div>
-          <div class="daysdetails">
-            <p>
-              🌥️&nbsp;☀️&nbsp;30
-              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
-                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
-              >
-            </p>
-          </div>
-        </div>
-        <div class="forecastd">
-          <div class="day">Friday</div>
-          <div class="daysdetails">
-            <p>
-              🌥️&nbsp;☀️&nbsp;30
-              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
-                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
-              >
-            </p>
-          </div>
-        </div>
-      </section>
+      <div class="forecast" id="forecast"></div>
+
       <footer>
         Coded by
         <a href="https://www.linkedin.com/in/evelyn-mwanunura-06a42a77/"
@@ -433,15 +295,33 @@
       function handleSearchSubmit(event) {
         event.preventDefault();
         let searchInput = document.getElementById("search");
-        let city = document.getElementById("city");
         let cityName = searchInput.value.trim() || "Cape Town";
-        city.innerHTML = cityName;
         searchCity(cityName);
+      }
+
+      function displayForecast() {
+        let forecastElement = document.getElementById("forecast");
+        let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+        let forecastHtml = "";
+        days.forEach(function (day) {
+          forecastHtml += `
+            <div class="forecastd">
+              <div class="hour">${day}</div>
+              <div class="imoji">🌧️</div>
+              <div class="min-maxtemp">
+                <div class="max-temp">30<span class="temp-symbol1">&deg;C</span>&nbsp;&nbsp;<span class="seperate">|</span></div>
+              <div class="min-temp">10<span class="temp-symbol1">&deg;C</span></div></div>
+            </div>
+          `;
+        });
+        forecastElement.innerHTML = forecastHtml;
       }
 
       window.onload = function () {
         searchCity("Cape Town");
+        displayForecast();
       };
+
       let searchForm = document.getElementById("search-form");
       searchForm.addEventListener("submit", handleSearchSubmit);
     </script>
