@@ -34,7 +34,12 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 800px;
+        height: 850px;
+      }
+      .imojii {
+        font-size: 7em;
+        margin-top: 1px;
+        margin-bottom: 1px;
       }
       input {
         width: 300px;
@@ -43,6 +48,7 @@
         height: 45px;
         color: black;
         border: none;
+        padding: 5px;
       }
       input:hover {
         background: black;
@@ -101,6 +107,8 @@
       .forecastd {
         padding-left: 10px;
         padding-right: 10px;
+        padding-bottom: -5px;
+        height: 40px;
         display: flex;
         justify-content: space-between;
         transition: transform 0.8s ease, background-color 0.8s ease;
@@ -123,6 +131,7 @@
 
       footer {
         color: white;
+        padding: 10px;
       }
       footer a {
         color: blue;
@@ -145,6 +154,9 @@
       .windandhumidity {
         font-size: 0.8em;
         margin-top: 0;
+      }
+      .current {
+        margin-top: -50px;
       }
       .current-temp {
         font-size: 4em;
@@ -173,18 +185,32 @@
         margin-top: -40px;
         font-size: 1.5em;
       }
+      .imoji {
+        padding: 10px;
+      }
+      .temp {
+        font-size: 1.3em;
+      }
+      .hour {
+        font-size: 0.8em;
+      }
+      .day {
+        font-size: 0.8em;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="imoji">
-        <p><span class="imojii">🌦️</span>Sunny</p>
+      <div class="imojii-div">
+        <p class="imojii">🌦️</p>
       </div>
       <div class="top-container">
-        <h1>
-          <span class="current-temp">26</span>
-          <sup class="temp-symbol">&deg;C</sup>
-        </h1>
+        <div class="current">
+          <h1>
+            <span class="current-temp">26</span>
+            <sup class="temp-symbol">&deg;C</sup>
+          </h1>
+        </div>
         <h3 class="city">Cape Town</h3>
         <p>
           <span class="feels">Feels like 32&deg;C</span> &nbsp;<span
