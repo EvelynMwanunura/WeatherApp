@@ -20,9 +20,7 @@
         display: flex;
         justify-content: center;
       }
-      #date {
-        color: white;
-      }
+
       .container {
         position: relative;
         display: flex;
@@ -36,7 +34,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 1000px;
+        height: 800px;
       }
       input {
         width: 300px;
@@ -57,20 +55,13 @@
         height: 45px;
         background: rgba(0, 0, 0, 0.2);
         border: none;
+        cursor: pointer;
+        transition: transform 0.8s ease, background-color 0.8s ease;
       }
       .search-btn:hover {
         background: black;
         color: white;
-      }
-      .todaysweather {
-        display: flex;
-        justify-content: space-around;
-        padding-left: 50px;
-        padding-right: 50px;
-        gap: 60px;
-      }
-      .tempcurrent {
-        display: block;
+        transform: scale(1.2);
       }
 
       .nexthrs {
@@ -83,6 +74,20 @@
         margin-top: 10px;
         color: white;
       }
+      .now {
+        width: 60px;
+        border-radius: 20px;
+        padding-left: 10px;
+        cursor: pointer;
+        transition: transform 0.8s ease, background-color 0.8s ease;
+      }
+      .now:hover {
+        transform: scale(1.2);
+        border: 1px solid grey;
+        border-radius: 20px;
+        background: black;
+      }
+
       .forecast {
         display: block;
         color: white;
@@ -90,108 +95,106 @@
         background-color: rgba(0, 0, 0, 0.2);
         border-radius: 20px;
         margin-top: 10px;
-        margin-bottom: 10px;
         padding: 10px;
       }
 
       .forecastd {
+        padding-left: 10px;
+        padding-right: 10px;
         display: flex;
         justify-content: space-between;
-        transition: background-color 0.8s ease;
+        transition: transform 0.8s ease, background-color 0.8s ease;
         border-radius: 20px;
+        cursor: pointer;
       }
       .forecastd:hover {
+        transform: scale(1.2);
         border: 1px solid grey;
         border-radius: 20px;
         background: black;
       }
+
       .day {
         padding-top: 15px;
       }
       .temp {
         font-size: 2em;
       }
-      .now {
-        width: 60px;
-        cursor: pointer;
+
+      footer {
+        color: white;
+      }
+      footer a {
+        color: blue;
+        text-decoration: none;
+        transition: text-decoration 0.5s ease-in-out;
+      }
+      footer a:hover {
+        text-decoration: underline;
+        color: white;
+      }
+      .top-container {
         text-align: center;
       }
-      .now:hover {
-        border-radius: 30px;
-        background: black;
+      .feels {
+        font-size: 0.6em;
       }
-      .imoji1 {
+      .seperator {
+        font-size: 1.4em;
+      }
+      .windandhumidity {
+        font-size: 0.8em;
+        margin-top: 0;
+      }
+      .current-temp {
         font-size: 4em;
+        margin-right: 0;
       }
-      .tempcurrent {
-        border: none;
-        display: flex;
-
-        padding: 10px;
-        margin-bottom: 20px;
+      .temp-symbol {
+        font-size: 0.9em;
+        vertical-align: 2.4em;
+        font-weight: lighter;
+        margin-left: -0.7em;
       }
-      .city1 {
-        border: none;
-        display: flex;
-        align-items: center;
-        border: none;
-        padding: 10px;
-        margin-right: 20px;
-        margin-top: 60px;
-        border-left: 2px solid #000;
-        height: 60px;
+      .temp-symbol1 {
+        font-size: 0.7em;
+        vertical-align: 1.6em;
+        font-weight: lighter;
+        margin-left: -0.5em;
+      }
+      .temp-symbol2 {
+        font-size: 0.5em;
+        vertical-align: 1em;
+        font-weight: lighter;
+        margin-left: -0.1em;
       }
       .city {
+        margin-bottom: -20px;
+        margin-top: -40px;
         font-size: 1.5em;
-        font-weight: bold;
-      }
-      .feels {
-        font-size: 0.5em;
-      }
-      .currenttemp {
-        font-size: 2.5em;
-      }
-      .highlow {
-        font-size: 0.45em;
-      }
-      .detailss {
-        font-size: 0.9em;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div id="date">
-        <p>23 December, 20:41</p>
+      <div class="imoji">
+        <p><span class="imojii">🌦️</span>Sunny</p>
       </div>
-      <h3 class="imoji">
-        <span class="imoji1">☀️</span> <strong>Sunny</strong>
-      </h3>
-
-      <div class="todaysweather">
-        <div class="tempcurrent">
-          <p class="temp">
-            <span class="currenttemp">26</span>&deg;C <br /><span
-              class="highlow"
-              >H 29&deg;C&nbsp;&nbsp; L19&deg;C</span
-            >
-          </p>
-        </div>
-
-        <div class="city1">
-          <p>
-            <span class="city">Cape Town</span><br /><span class="feels"
-              >&nbsp;&nbsp;Feels like 32&deg;C</span
-            >
-            <br />
-            <br />
-            <span class="detailss"
-              >༄ &nbsp;Wind 4km/h
-              <br />
-              💧Humidity 76%
-            </span>
-          </p>
-        </div>
+      <div class="top-container">
+        <h1>
+          <span class="current-temp">26</span>
+          <sup class="temp-symbol">&deg;C</sup>
+        </h1>
+        <h3 class="city">Cape Town</h3>
+        <p>
+          <span class="feels">Feels like 32&deg;C</span> &nbsp;<span
+            class="seperator"
+            >|</span
+          >
+          <span class="windandhumidity">Wind:4km/h</span>
+          <span class="seperator">|</span>
+          <span class="windandhumidity">💧Humidity: 15%</span>
+        </p>
       </div>
       <div class="search-container">
         <input type="text" placeholder="Search for your city here..." />
@@ -206,7 +209,8 @@
             <span class="imoji">☀️</span>
             <br />
             <br />
-            <span class="temp">26&deg;</span>
+            <span class="temp">26</span>
+            <sup class="temp-symbol1">&deg;C</sup>
           </p>
         </div>
         <div class="now">
@@ -217,7 +221,8 @@
             <span class="imoji">☀️</span>
             <br />
             <br />
-            <span class="temp">26&deg;</span>
+            <span class="temp">26</span>
+            <sup class="temp-symbol1">&deg;C</sup>
           </p>
         </div>
         <div class="now">
@@ -228,7 +233,8 @@
             <span class="imoji">☀️</span>
             <br />
             <br />
-            <span class="temp">26&deg;</span>
+            <span class="temp">26</span>
+            <sup class="temp-symbol1">&deg;C</sup>
           </p>
         </div>
         <div class="now">
@@ -239,7 +245,8 @@
             <span class="imoji">☀️</span>
             <br />
             <br />
-            <span class="temp">26&deg;</span>
+            <span class="temp">26</span>
+            <sup class="temp-symbol1">&deg;C</sup>
           </p>
         </div>
         <div class="now">
@@ -250,7 +257,8 @@
             <span class="imoji">☀️</span>
             <br />
             <br />
-            <span class="temp">26&deg;</span>
+            <span class="temp">26</span>
+            <sup class="temp-symbol1">&deg;C</sup>
           </p>
         </div>
       </div>
@@ -258,34 +266,66 @@
         <div class="forecastd">
           <div class="day">Today</div>
           <div class="daysdetails">
-            <p>🌥️&nbsp;☀️&nbsp;30 &deg; C &nbsp;<span>15&deg; C</span></p>
+            <p>
+              🌥️&nbsp;☀️&nbsp;30
+              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
+                >15<sup class="temp-symbol2">&deg;C</sup></span
+              >
+            </p>
           </div>
         </div>
         <div class="forecastd">
           <div class="day">Tuesday</div>
           <div class="daysdetails">
-            <p>🌥️&nbsp;☀️&nbsp;30 &deg; C &nbsp;<span>15&deg; C</span></p>
+            <p>
+              🌥️&nbsp;☀️&nbsp;30
+              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
+                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
+              >
+            </p>
           </div>
         </div>
         <div class="forecastd">
           <div class="day">Wednesday</div>
           <div class="daysdetails">
-            <p>🌥️&nbsp;☀️&nbsp;30 &deg; C &nbsp;<span>15&deg; C</span></p>
+            <p>
+              🌥️&nbsp;☀️&nbsp;30
+              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
+                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
+              >
+            </p>
           </div>
         </div>
         <div class="forecastd">
           <div class="day">Thursday</div>
           <div class="daysdetails">
-            <p>🌥️&nbsp;☀️&nbsp;30 &deg; C&nbsp; <span>15&deg; C</span></p>
+            <p>
+              🌥️&nbsp;☀️&nbsp;30
+              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
+                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
+              >
+            </p>
           </div>
         </div>
         <div class="forecastd">
           <div class="day">Friday</div>
           <div class="daysdetails">
-            <p>🌥️&nbsp;☀️&nbsp;30 &deg; C &nbsp;<span>15&deg; C</span></p>
+            <p>
+              🌥️&nbsp;☀️&nbsp;30
+              <sup class="temp-symbol2">&deg;C</sup> &nbsp;<span
+                >15&nbsp;<sup class="temp-symbol2">&deg;C</sup></span
+              >
+            </p>
           </div>
         </div>
       </section>
+      <footer>
+        Coded by
+        <a href="https://www.linkedin.com/in/evelyn-mwanunura-06a42a77/"
+          >Evelyn</a
+        >, hosted on <a href="https://github.com/EvelynMwanunura">GitHub</a> and
+        <a href="https://weatherappeve.netlify.app/">Netlify</a>
+      </footer>
     </div>
   </body>
 </html>
