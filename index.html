@@ -38,13 +38,7 @@
         background-repeat: no-repeat;
         height: 850px;
       }
-      .imojii {
-        font-size: 7em;
-        margin-top: 1px;
-        margin-bottom: 1px;
-        text-shadow: 0 0 10px #dad7da, 0 0 20px #ebe8eb, 0 0 30px #ff00ff,
-          0 0 40px #ece6ec, 0 0 50px #f6f3f6;
-      }
+
       input {
         width: 300px;
         background: rgba(0, 0, 0, 0.2);
@@ -209,9 +203,7 @@
   <body>
     <div class="container">
       <p id="date">Date</p>
-      <div class="imojii-div">
-        <p class="imojii">🌦️</p>
-      </div>
+      <div id="icon"></div>
       <div class="top-container">
         <div class="current">
           <h1>
@@ -375,6 +367,10 @@
         let humidityElement = document.getElementById("humidity");
         let dateElement = document.getElementById("date");
         let time = new Date(response.data.time * 1000);
+        let iconElement = document.getElementById("icon");
+        iconElement.innerHTML = `<img
+          src="${response.data.condition.icon_url}"class="iconimg"
+        />`;
 
         dateElement.innerHTML = formatDate(time);
         humidityElement.innerHTML = response.data.temperature.humidity;
