@@ -200,51 +200,128 @@
       }
 
       @media (max-width: 1024px) {
-        .weather-app {
-          padding: 15px;
+        .container {
+          width: 90%;
+          height: auto;
+          margin: 20px auto;
+          padding: 20px;
         }
 
-        .temperature {
-          font-size: 2.5rem;
+        input {
+          width: 80%;
+          height: 40px;
         }
 
-        .location {
-          font-size: 1.2rem;
+        .search-btn {
+          width: 80px;
+          height: 40px;
+        }
+
+        .forecast {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .forecastd {
+          width: 100%;
+          height: auto;
+          margin-bottom: 10px;
+        }
+
+        .current-temp {
+          font-size: 3rem;
+        }
+
+        .icon img {
+          width: 100px;
+          height: 100px;
         }
       }
 
       /* For mobile devices */
       @media (max-width: 600px) {
-        .weather-app {
+        .container {
+          width: 100%;
+          height: auto;
           padding: 10px;
         }
 
-        .weather-header,
-        .weather-footer {
+        input {
+          width: 90%;
+          height: 35px;
           font-size: 1rem;
         }
 
-        .temperature {
-          font-size: 2rem;
+        .search-btn {
+          width: 70px;
+          height: 35px;
+          font-size: 0.9rem;
         }
 
-        .location {
-          font-size: 1rem;
+        .forecast {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .forecastd {
+          width: 100%;
+          height: auto;
+          padding: 10px;
+          font-size: 0.9rem;
+        }
+
+        .current-temp {
+          font-size: 2.5rem;
+        }
+
+        .city {
+          font-size: 1.2rem;
+        }
+
+        .icon img {
+          width: 80px;
+          height: 80px;
         }
       }
 
       /* For very small devices */
       @media (max-width: 350px) {
-        .weather-app {
+        .container {
+          width: 100%;
+          height: auto;
           padding: 5px;
         }
 
-        .temperature {
-          font-size: 1.5rem;
+        input {
+          width: 90%;
+          height: 30px;
+          font-size: 0.8rem;
         }
 
-        .location {
-          font-size: 0.9rem;
+        .search-btn {
+          width: 60px;
+          height: 30px;
+          font-size: 0.8rem;
+        }
+
+        .forecastd {
+          font-size: 0.8rem;
+          padding: 8px;
+        }
+
+        .current-temp {
+          font-size: 2rem;
+        }
+
+        .city {
+          font-size: 1rem;
+        }
+
+        .icon img {
+          width: 60px;
+          height: 60px;
         }
       }
     </style>
