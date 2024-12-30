@@ -198,6 +198,55 @@
         margin-top: -20px;
         margin-bottom: -10px;
       }
+
+      @media (max-width: 1024px) {
+        .weather-app {
+          padding: 15px;
+        }
+
+        .temperature {
+          font-size: 2.5rem;
+        }
+
+        .location {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* For mobile devices */
+      @media (max-width: 768px) {
+        .weather-app {
+          padding: 10px;
+        }
+
+        .weather-header,
+        .weather-footer {
+          font-size: 1rem;
+        }
+
+        .temperature {
+          font-size: 2rem;
+        }
+
+        .location {
+          font-size: 1rem;
+        }
+      }
+
+      /* For very small devices */
+      @media (max-width: 480px) {
+        .weather-app {
+          padding: 5px;
+        }
+
+        .temperature {
+          font-size: 1.5rem;
+        }
+
+        .location {
+          font-size: 0.9rem;
+        }
+      }
     </style>
   </head>
   <body>
