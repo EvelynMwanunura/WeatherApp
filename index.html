@@ -15,7 +15,7 @@
     <style>
       body {
         font-family: "PT Sans", serif;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         background: linear-gradient(120deg, #252525, #2d2c2c);
         color: #333;
@@ -31,7 +31,7 @@
         margin-bottom: 30px;
         align-items: center;
         border-radius: 20px;
-        width: 700px;
+        width: 500px;
         background-image: url(sunrise.jpg);
         background-size: cover;
         background-position: center;
@@ -40,7 +40,7 @@
       }
 
       input {
-        width: 450px;
+        width: 360px;
         background: rgba(0, 0, 0, 0.2);
         border-radius: 20px;
         height: 45px;
@@ -55,7 +55,7 @@
         transform: scale(1.1);
       }
       .search-btn {
-        width: 100px;
+        width: 80px;
         background: black;
         border-radius: 20px;
         height: 55px;
@@ -73,21 +73,23 @@
 
       .forecast {
         display: flex;
-        text-align: center;
-        position: relative;
-        justify-content: space-between;
-        width: 600px;
-        margin-top: 50px;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        margin-top: 45px;
+        gap: 7px;
+
         color: white;
-        height: 200px;
       }
       .forecastd {
-        width: 900px;
-        height: 120px;
+        width: 65px;
+        height: auto;
         background-color: rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 20px;
         padding: 10px;
+        text-align: center;
+
         cursor: pointer;
 
         transition: transform 0.8s ease, background-color 0.8s ease;
@@ -100,6 +102,8 @@
       footer {
         color: white;
         padding: 20px;
+        text-align: center;
+        margin-top: 50px;
       }
       footer a {
         color: blue;
@@ -181,15 +185,15 @@
         justify-content: space-around;
       }
       .hour {
-        font-size: 1.2em;
+        font-size: 0.8em;
         padding-bottom: 10px;
       }
       .max-temp {
-        font-size: 1.3em;
+        font-size: 0.8em;
         font-weight: bolder;
       }
       .min-temp {
-        font-size: 1.3em;
+        font-size: 0.8em;
         font-weight: lighter;
       }
       .imoji img {
@@ -274,15 +278,7 @@
       function formatDate(time) {
         let minutes = time.getMinutes();
         let hours = time.getHours();
-        let days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
         let day = days[time.getDay()];
         if (minutes < 10) {
           minutes = `0${minutes}`;
@@ -316,15 +312,7 @@
         let forecastHtml = "";
 
         let now = new Date();
-        let days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
         response.data.daily.slice(0, 5).forEach(function (day, index) {
           let dayIndex = (now.getDay() + index + 1) % 7;
