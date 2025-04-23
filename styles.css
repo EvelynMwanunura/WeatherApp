@@ -1,0 +1,193 @@
+body {
+  font-family: "PT Sans", serif;
+  margin: 0 auto;
+  padding: 0;
+  background: linear-gradient(120deg, #252525, #2d2c2c);
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  align-items: center;
+  border-radius: 20px;
+  width: 500px;
+  background-image: url(sunrise.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 700px;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  /*flex-direction: column;*/
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  height: 40px;
+  color: black;
+  border: none;
+  padding: 5px;
+  transition: background-color 0.8s ease;
+}
+input:hover {
+  background: black;
+  color: white;
+}
+.search-btn {
+  width: 60px;
+  background: black;
+  border-radius: 20px;
+  height: 45px;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+
+  transition: transform 0.8s ease, background-color 0.8s ease;
+}
+.search-btn:hover {
+  background: black;
+  color: white;
+  transform: scale(1.2);
+}
+
+.forecast {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 45px;
+  gap: 7px;
+  color: white;
+}
+.forecastd {
+  width: 65px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.8s ease, background-color 0.8s ease;
+}
+
+.temp {
+  font-size: 2em;
+}
+
+footer {
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+footer a {
+  color: blue;
+  text-decoration: none;
+  transition: text-decoration 0.5s ease-in-out;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+.top-container {
+  text-align: center;
+}
+.feels {
+  font-size: 0.8em;
+}
+.seperator {
+  font-size: 1.4em;
+}
+.windandhumidity {
+  font-size: 0.8em;
+  margin-top: 0;
+}
+.symbols {
+  font-size: 0.8em;
+}
+.current {
+  margin-top: -20px;
+}
+.current-temp {
+  font-size: 4em;
+  margin-right: 0;
+}
+.temp-symbol {
+  font-size: 0.9em;
+  vertical-align: 2.4em;
+  font-weight: lighter;
+  margin-left: -0.5em;
+}
+.temp-symbol1 {
+  font-size: 0.4em;
+  vertical-align: 1.3em;
+  font-weight: lighter;
+  margin-left: -0.1em;
+}
+
+.city {
+  margin-bottom: -20px;
+  margin-top: -20px;
+  font-size: 1.5em;
+}
+.imoji {
+  padding: 10px;
+}
+
+#date {
+  color: white;
+}
+.tempicon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.icon img {
+  width: 150px;
+  height: 150px;
+  margin-top: -50px;
+}
+#wind {
+  font-size: 0.8em;
+}
+
+#humidity {
+  font-size: 0.8em;
+}
+.min-maxtemp {
+  display: flex;
+
+  justify-content: space-around;
+}
+.hour {
+  font-size: 0.8em;
+  padding-bottom: 10px;
+}
+.max-temp {
+  font-size: 0.8em;
+  font-weight: bolder;
+}
+.min-temp {
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+.imoji img {
+  width: 50px;
+  padding: 1px;
+  margin-top: -20px;
+  margin-bottom: -10px;
+}
